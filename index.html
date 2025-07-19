@@ -3,13 +3,325 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kleines Klee | Kinderkleidung Secondhand</title>
-    <style></style>
+    <title>Kleines Klee | Nachhaltige Mode</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #4a6b3a; 
+            --secondary-color: #8ba888; 
+            --third-color: #768466; 
+            --accent-color:  #fff0db;
+            --light-color: #f8f5f0;
+            --dark-color: #2c3e2a;
+            --text-color: #333333;
+            --text-light: #777777;
+            --white: #ffffff;
+            --max-width: 1400px;
+            --rounded-sm: 4px;
+            --rounded: 12px;
+            --rounded-lg: 24px;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
+            --shadow: 0 4px 12px rgba(0,0,0,0.12);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-color);
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+        }
+
+        .container {
+            width: 100%;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        header {
+            background-color: rgba(255, 255, 255, 0.9);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 1rem 0;
+            box-shadow: var(--shadow-sm);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .logo-title-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--dark-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        nav a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        nav a:hover:after {
+            width: 100%;
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
+        }
+
+        .hero {
+            height: 80vh;
+            min-height: 90vh;
+            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), 
+                        url('src/bg.png');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            color: var(--white);
+            padding: 2rem;
+            background: rgba(74, 107, 58, 0.85);
+            border-radius: var(--rounded);
+            margin-left: 10%;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--accent-color);
+            color: var(--dark-color);
+            padding: 0.8rem 2rem;
+            border-radius: var(--rounded-sm);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-primary {
+            background: var(--white);
+            color: var(--primary-color);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--dark-color);
+            margin-bottom: 1rem;
+        }
+
+        .section-title p {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .contact-section {
+            padding-top: 4rem;
+            background-color: var(--accent-color);
+        }
+
+        .map {
+            margin-top: 2rem;
+            padding-bottom: 2rem;
+        }
+
+        #about, #contact {
+            padding-top: 2rem;
+            scroll-margin-top: 80px;
+        }
+
+
+        @media (max-width: 768px) {
+            #about, #contact {
+                scroll-margin-top: 60px;
+            }
+        }
+
+        @media (max-width: 912px) {
+            .hero {
+                min-height: 600px;
+                background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), 
+                            url('src/mobile-bg-kleines-klee.png');
+                background-size: cover;
+                background-position: center;                 
+            }
+        }
+
+        @media (max-width: 992px) {
+            .hero-content {
+                  margin-left: 5%;
+                  margin-right: 5%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                  flex-direction: column;
+                  gap: 1rem;
+            }
+          
+            nav ul {
+                gap: 1.5rem;
+            }
+            
+            .hero {
+                height: auto;
+                min-height: 500px;
+            }
+            
+            .hero-content {
+                margin: 2rem auto;
+                max-width: 90%;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+        }
+
+        footer {
+            background: var(--dark-color);
+            color: var(--white);
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-column a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-column a:hover {
+            color: var(--white);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--primary-color);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+    </style>
 </head>
 <body>
     <header>
         <div class="container header-container">
-            <h1>Kleines Klee</h1>
+            <div class="logo-title-container">
+                <img src="src/kleines-klee-logo.jpeg" alt="Logo" style="width:60px;" class="rounded-pill">
+                <h1>Kleines Klee</h1>
+            </div>
             <nav>
                 <ul>
                     <li><a href="index.html">Startseite</a></li>
@@ -22,50 +334,44 @@
 
     <main>
         <section class="hero">
-            <div class="hero-content animate">
+            <div class="hero-content">
                 <h2>Kleines Klee</h2>
                 <p>Nachhaltige Secondhand Kinderkleidung</p>
-                <a href="shop.html" class="btn btn-primary">Zum Shop</a>
+                <a href="#about" class="btn btn-primary">Über uns</a>
             </div>
         </section>
 
-        <section id="about" class="about-section">
-                <div class="section-title animate">
-                    <h2>Über uns</h2>
-                    <p>
-                    Hallo und herzlich willkommen beim „kleines Klee“ 🍀
-                    Ich bin Vanessa, 27 Jahre alt und Mama eines kleinen 1 jährigen Sohnes.
-                    Mit viel Herz, Kreativität und Liebe zum Detail habe ich die Nachfolge vom Klee Babysecondhand angetreten.
-                    Aus dem bekannten Konzept ist nun „kleines Klee“ geworden.
-                    Bei uns findest du nachhaltige, saubere und gut erhaltene Kleidung für Babys und Kleinkinder zwischen den Größen 50-104. 
-                    Sorgfältig ausgewählt, schlicht im Stil und fair im Preis.
-                    Ich glaube daran, dass gute Kleidung kein neues Preisschild braucht, sondern eine zweite Chance.
-                    Ordnung, Qualität und ein gutes Gefühl beim Einkaufen stehen bei „kleines Klee“ im Mittelpunkt. 
-                    Schön, dass du da bist – ich freue mich auf deinen Besuch!
-                    </p>
-                </div>
+        <section id="about" class="container">
+            <div class="section-title">
+                <h2>Über uns</h2>
+                <p>
+                Hallo und herzlich willkommen beim „kleines Klee" 🍀
+                Ich bin Vanessa, 27 Jahre alt und Mama eines kleinen 1 jährigen Sohnes.
+                Mit viel Herz, Kreativität und Liebe zum Detail habe ich die Nachfolge vom Klee Babysecondhand angetreten.
+                Aus dem bekannten Konzept ist nun „kleines Klee" geworden.
+                Bei uns findest du nachhaltige, saubere und gut erhaltene Kleidung für Babys und Kleinkinder zwischen den Größen 50-104. 
+                Sorgfältig ausgewählt, schlicht im Stil und fair im Preis.
+                Ich glaube daran, dass gute Kleidung kein neues Preisschild braucht, sondern eine zweite Chance.
+                Ordnung, Qualität und ein gutes Gefühl beim Einkaufen stehen bei „kleines Klee" im Mittelpunkt. 
+                Schön, dass du da bist – ich freue mich auf deinen Besuch!
+                </p>
+            </div>
         </section>
-
         
         <section id="contact" class="contact-section">
             <div class="container">
-                <div class="section-title animate">
+                <div class="section-title">
                     <h2>Kontakt</h2>
                     <p>Wir freuen uns auf Ihren Besuch oder Ihre Nachricht.</p>
                 </div>
                 <div class="contact-grid">
-                    <div class="contact-info animate">
+                    <div class="contact-info">
                         <h3>So können Sie uns erreichen:</h3>
-                        <p><strong>Adresse:</strong><br>noch nicht gegeben<br>Karlsruhe</p>
-                        <p><strong>Öffnungszeiten:</strong>noch nicht gegeben</p>
-                        <p><strong>Telefon:</strong> 
-                            <!-- <a href="tel:"></a></p>-->
-                        <p><strong>Email:</strong> 
-                            <!-- <a href="mailto:fehlt noch">fehlt noch</a>-->
-                        </p>
+                        <p><strong>Adresse:</strong><br>Stephanienstraße 34<br>76133 Karlsruhe</p>
+                        <p><strong>Öffnungszeiten:</strong> noch nicht gegeben</p>
                     </div>
                     <div class="map">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5233.858360333322!2d8.391597076533406!3d49.011932289888954!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479706511e79ebd7%3A0xef06f4d4c67e6b22!2sStephanienstra%C3%9Fe%2034%2C%2076133%20Karlsruhe!5e0!3m2!1sen!2sde!4v1752760605087!5m2!1sen!2sde" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5233.858360333322!2d8.391597076533406!3d49.011932289888954!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479706511e79ebd7%3A0xef06f4d4c67e6b22!2sStephanienstra%C3%9Fe%2034%2C%2076133%20Karlsruhe!5e0!3m2!1sen!2sde!4v1752760605087!5m2!1sen!2sde" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                 </div>
             </div>
@@ -104,6 +410,7 @@
     </footer>
 
     <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
     </script>
 </body>
 </html>
